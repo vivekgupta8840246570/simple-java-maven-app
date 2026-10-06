@@ -3,7 +3,7 @@ pipeline {
         label 'rocky-vm3'
     }
     tools {
-        maven 'M3.9.9' // This name must match exactly what you typed in Jenkins Tools
+        maven 'M3.9.10' // This name must match exactly what you typed in Jenkins Tools
     }
     options {
         skipStagesAfterUnstable()
