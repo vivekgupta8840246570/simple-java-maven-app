@@ -1,8 +1,8 @@
 pipeline {
     agent {label 'rocky-vm3'}
     stages {
-        stage('build')  { steps { echo 'This is build stage' } }
-        stage('test')   { steps { echo 'This is test stage' } }
-        stage('deploy') { steps { echo 'This is deploy stage' } }
+        stage('build')  { steps { mvn clean package } }
+        stage('test')   { steps { mvn clean package } }
+        stage('deploy') { steps { mvn clean package } }
     }
 }
