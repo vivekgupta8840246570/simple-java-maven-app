@@ -8,10 +8,10 @@ pipeline {
             } 
         }
         stage('test') { 
-            steps { 
-                // Runs the tests against the compiled code
-                sh 'mvn test' 
-            } 
+            parallel {
+                stage('test A') { steps { sh 'mvn test'; echo 'This is test A' } }
+                stage('test B') { steps { sh 'mvn test'; echo 'This is test B' } }
+    }
         }
         stage('deploy') { 
             steps { 
