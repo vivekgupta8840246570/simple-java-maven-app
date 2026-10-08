@@ -1,13 +1,28 @@
 pipeline {
-    agent {label 'rocky-vm3'}
+    agent { label 'rocky-vm3' }
     stages {
-        stage('build')  { steps { sh 'mvn clean package' } }
-        stage('test')   { steps { sh 'mvn clean package' } }
-        stage('deploy') { steps { sh 'mvn clean package' } }
+        stage('build') { 
+            steps { 
+                // Compiles and packages the WAR without running tests yet
+                sh 'mvn clean package -DskipTests' 
+            } 
+        }
+        stage('test') { 
+            steps { 
+                // Runs the tests against the compiled code
+                sh 'mvn test' 
+            } 
+        }
+        stage('deploy') { 
+            steps { 
+                // Example placeholder: actual deployment logic goes here
+                sh 'echo "Deploying the WAR file..."' 
+            } 
+        }
     }
     post {
         success {
-            archieveArtifacts artifacts: '**/target/*.war'
+            archiveArtifacts artifacts: '**/target/*.war'
         }
     }
 }
