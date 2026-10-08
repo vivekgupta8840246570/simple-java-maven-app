@@ -16,13 +16,13 @@ pipeline {
         stage('deploy') { 
             steps { 
                 // Example placeholder: actual deployment logic goes here
-                sh 'echo "Deploying the WAR file..."' 
+                sh 'echo "Deploying the jar file..."' 
             } 
         }
     }
     post {
         success {
-            archiveArtifacts artifacts: '**/target/*.war'
+            archiveArtifacts artifacts: '**/target/*.jar'
         }
     }
 }
