@@ -3,9 +3,6 @@ pipeline {
     environment {
         name = "Nikhil"
     }
-    parameters {
-        string ( name: 'last name' , defaultvalue: '....')
-    }
     stages {
         stage('build') { 
             steps { 
