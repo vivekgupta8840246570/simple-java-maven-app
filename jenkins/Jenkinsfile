@@ -5,9 +5,12 @@ pipeline {
     }
     stages {
         stage('build') { 
+            agent { label 'rocky-vm1' }
+            tools { maven 'myMaven'}
             steps { 
                 // Compiles and packages the WAR without running tests yet
                 sh 'mvn clean package -DskipTests'
+                stash name: 'Maven-build', includes: 'target/*.war'
                 echo "Hello $name"
             } 
         }
